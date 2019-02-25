@@ -1,0 +1,12 @@
+dist: trusty
+
+before_deploy:
+- zip -r thirdparty-configs.zip thirdparty-config/
+
+deploy:
+- provider: releases
+  api_key: $apikey
+  file: ${TRAVIS_BUILD_NUMBER}.zip
+  skip_cleanup: true
+  on:
+    branch: master
